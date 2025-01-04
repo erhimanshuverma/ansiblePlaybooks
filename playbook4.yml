@@ -1,0 +1,18 @@
+---
+- name: Download jenkins.war and change the permissions
+  hosts: all
+  tasks:
+    - name: download jenkins.war
+      get_url:
+        url: https://get.jenkins.io/war-stable/2.479.2/jenkins.war
+        dest: /tmp
+    - name: chanhe permissions of the jenkins.war file
+      file:
+        name: /tmp/jenkins.war
+        mode: 760
+        owner: Ravi
+        group: sai
+
+  
+
+...
