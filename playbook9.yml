@@ -1,0 +1,16 @@
+---
+- name: crete users and create files/directo in the user home directory
+  hosts: all
+  tasks: 
+   - name: create users 
+     user:
+        name: "{{a}}"
+        password: "{{b}}"
+        home: "{{c}}"
+   - name: create file/dires in users home directory
+     file:
+       name: "{{d}}"
+       state: "{{e}}"
+
+...         
+   
