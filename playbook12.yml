@@ -1,0 +1,14 @@
+---
+- name: implementing hostscopr variable
+  hosts: 172.31.24.66
+  tasks:
+     - name: Crate User
+       user:
+         name: "{{a}}"
+         password: "{{b}}"
+         uid: "{{c}}"
+         home: "{{d}}"
+         shell: "{{e}}"
+         comment: "{{f}}"
+...           
+
