@@ -1,0 +1,30 @@
+---
+- name: implementing Handlers
+  hosts: all
+  tasks:
+    - name: install apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+      notify: check apache response
+    - name: Edit the index.html file
+      copy:
+        content: "Welcome to IntelliQIT"
+        dest: /var/www/html/index.html
+      notify: Restart apache2
+  handlers:
+    - name: Restart apache2
+      service:
+        name: apache2
+        state: restarted
+    - name: check apache response
+      uri:
+        url: "{{item}}"
+        status_code: 200
+      with_items:
+        - http://172.31.17.150
+        - http://172.31.31.193
+
+...
+
